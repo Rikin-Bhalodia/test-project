@@ -1,9 +1,8 @@
-import * as React from "react";
 import { Container, Typography, Grid, Button, Box } from "@material-ui/core";
 import { Formik, FormikHelpers, FormikProps, Form, Field } from "formik";
 import { FormTextField } from "./Field";
 import * as yup from "yup";
-import "../App.css";
+import "../../App.css";
 
 interface FormValues {
   name: string;

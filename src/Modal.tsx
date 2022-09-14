@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
-import MyForm from "./Common/Form";
+import MyForm from "./component/Common/Form";
 
 const style = {
   position: "absolute" as "absolute",

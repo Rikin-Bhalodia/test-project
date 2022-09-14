@@ -1,5 +1,4 @@
-import React from "react";
-import TransitionsModal from "./Modal";
+import TransitionsModal from "../../Modal";
 
 const Dashboard = () => {
   return (
