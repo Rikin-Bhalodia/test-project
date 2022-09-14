@@ -4,6 +4,7 @@ import CardMedia from "@mui/material/CardMedia";
 import AddBoxSharpIcon from "@mui/icons-material/AddBoxSharp";
 import IndeterminateCheckBoxSharpIcon from "@mui/icons-material/IndeterminateCheckBoxSharp";
 import ProductHeader from "../../Common/ProductHeader";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const Cart = ({ ele }: any) => {
   return (
@@ -27,6 +28,7 @@ const Cart = ({ ele }: any) => {
               <IndeterminateCheckBoxSharpIcon style={{ cursor: "pointer" }} />
             </div>
             <Typography>Unit Price</Typography>
+            <DeleteIcon style={{ cursor: "pointer" }} />
           </div>
         </div>
         <div className="filters summary">
