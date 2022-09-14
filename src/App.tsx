@@ -1,13 +1,21 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./App.css";
-import Dashboard from "./container/dashboard/Dashboard";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
+import store from "./redux/store";
 import Routers from "./routes/router";
-import { getAllProducts } from "./utils/api/Product";
+
+const persistor = persistStore(store);
 
 function App() {
   return (
     <React.Fragment>
-      <Routers />
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <Routers />
+        </PersistGate>
+      </Provider>
     </React.Fragment>
   );
 }
