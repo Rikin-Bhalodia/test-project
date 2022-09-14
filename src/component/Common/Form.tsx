@@ -3,15 +3,20 @@ import { Formik, FormikHelpers, FormikProps, Form, Field } from "formik";
 import { FormTextField } from "./Field";
 import * as yup from "yup";
 import "../../App.css";
+import UploadImage from "./UploadImage";
 
 interface FormValues {
-  name: string;
+  product_name: string;
   description: string;
+  quantity: string;
+  unit_price: string;
 }
 
 const validationSchema = yup.object().shape({
-  name: yup.string().required("Required"),
+  product_name: yup.string().required("Required"),
   description: yup.string().required("Required"),
+  quantity: yup.string().required("Required"),
+  unit_price: yup.string().required("Required"),
 });
 
 export default function MyForm() {
@@ -28,8 +33,10 @@ export default function MyForm() {
       </Box>
       <Formik
         initialValues={{
-          name: "",
+          product_name: "",
           description: "",
+          quantity: "",
+          unit_price: "",
         }}
         validationSchema={validationSchema}
         onSubmit={(
@@ -51,11 +58,8 @@ export default function MyForm() {
                   component={FormTextField}
                 />
               </Grid>
-              <Grid item xs={12}>
-                <label className="btn-upload">
-                  <input type="file" name="fileupload" />
-                  <button className="btn">Upload Image</button>
-                </label>
+              <Grid item xs={12} style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+                <UploadImage />
               </Grid>
               <Grid item xs={12}>
                 <Field
