@@ -1,12 +1,11 @@
+import React from "react";
 import Products from "../../component/dashboard/products/Products";
-import TransitionsModal from "../../Modal";
 
 const Dashboard = () => {
   return (
-    <>
-      <TransitionsModal />
+    <React.Fragment>
       <Products />
-    </>
+    </React.Fragment>
   );
 };
 
