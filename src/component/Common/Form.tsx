@@ -1,12 +1,23 @@
-import { Container, Typography, Grid, Button, Box } from "@material-ui/core";
+import {
+  Container,
+  Typography,
+  Grid,
+  Button,
+  Box,
+  CircularProgress,
+} from "@material-ui/core";
 import { Formik, FormikHelpers, FormikProps, Form, Field } from "formik";
 import { FormTextField } from "./Field";
 import * as yup from "yup";
 import "../../App.css";
 import UploadImage from "./UploadImage";
 import { useState } from "react";
-import { addProduct } from "../../utils/api/Product";
+import SaveIcon from "@mui/icons-material/Save";
+import LoadingButton from "@mui/lab/LoadingButton";
+import { addProduct, getAllProducts } from "../../utils/api/Product";
 import firebase from "../../Firebase-global";
+import { getProductAction } from "../../redux/actions";
+import { useDispatch } from "react-redux";
 interface FormValues {
   name: string;
   price: number;
@@ -22,9 +33,14 @@ const validationSchema = yup.object().shape({
 });
 
 export default function MyForm({ setOpen }: any) {
+  const dispatch = useDispatch();
   const [url, setUrl] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [selectedImage, setSelectedImage] = useState<any>(null);
-
+  const AllProduct = async () => {
+    const products = await getAllProducts();
+    dispatch(getProductAction(products));
+  };
   return (
     <Container maxWidth="md">
       <Box mb={3} p={2}>
@@ -44,14 +60,22 @@ export default function MyForm({ setOpen }: any) {
           price: 200,
         }}
         validationSchema={validationSchema}
-        onSubmit={(
+        onSubmit={async (
           values: FormValues,
           formikHelpers: FormikHelpers<FormValues>
         ) => {
-          console.log(values);
+          setLoading(true);
           if (selectedImage === null) {
-            addProduct({ ...values, url: "" });
-            setOpen(false);
+            let data = await addProduct({ ...values, url: "" });
+            if (data) {
+              AllProduct();
+              setOpen(false);
+              setLoading(false);
+            } else {
+              AllProduct();
+              setOpen(false);
+              setLoading(false);
+            }
           } else {
             firebase
               .storage()
@@ -62,16 +86,26 @@ export default function MyForm({ setOpen }: any) {
                   .storage()
                   .ref("/images" + selectedImage.name)
                   .getDownloadURL()
-                  .then((url) => {
-                    addProduct({ ...values, url });
-                    setOpen(false);
+                  .then(async (url) => {
+                    let data = await addProduct({ ...values, url });
+                    if (data) {
+                      AllProduct();
+                      setOpen(false);
+                      setLoading(false);
+                    } else {
+                      AllProduct();
+                      setOpen(false);
+                      setLoading(false);
+                    }
                   })
                   .catch((err) => {
                     console.log(err);
+                    setLoading(false);
                   });
               })
               .catch((err) => {
                 console.log(err);
+                setLoading(false);
               });
           }
           formikHelpers.setSubmitting(false);
@@ -138,7 +172,7 @@ export default function MyForm({ setOpen }: any) {
                   color="primary"
                   disabled={formikProps.isSubmitting}
                 >
-                  Submit
+                  {loading ? "Loading..." : "Submit"}
                 </Button>
               </Grid>
             </Grid>
