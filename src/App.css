@@ -81,5 +81,24 @@
   flex-wrap: wrap;
   justify-content: space-around;
   margin: 0 auto;
-  border: 1px solid rgba(0,0,0,.125);
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+.main_logo {
+  position: relative;
+  height: 22px;
+}
+.circle {
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  position: absolute;
+  border-radius: 50%;
+  color: #343a40;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 10px;
+  top: -12px;
+  right: 10px;
+  font-size: 15px;
 }
