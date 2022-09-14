@@ -7,13 +7,12 @@ import "firebase/storage";
 // @ts-ignore
 if (!firebase?.apps.length) {
   firebase.initializeApp({
-    apiKey: "AIzaSyABtk1Mc1p1XXy6OPBXO6GqZfUnxu1m3L8",
-    authDomain: "aurum-e415f.firebaseapp.com",
-    projectId: "aurum-e415f",
-    storageBucket: "aurum-e415f.appspot.com",
-    messagingSenderId: "336101716649",
-    appId: "1:336101716649:web:aa4588e6480ff63673efb8",
-    measurementId: "G-9DDC67BKJM",
+    apiKey: "AIzaSyA1GaxiDwuejqHNeyfHIekWw9r2-qfgZrM",
+    authDomain: "canvas-e7173.firebaseapp.com",
+    projectId: "canvas-e7173",
+    storageBucket: "canvas-e7173.appspot.com",
+    messagingSenderId: "15458909355",
+    appId: "1:15458909355:web:2ab2c4d7aa8d8ee6154bee",
   });
 } else {
   //@ts-ignore

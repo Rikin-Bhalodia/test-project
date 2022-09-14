@@ -39,7 +39,7 @@ export default function TransitionsModal() {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <MyForm />
+            <MyForm setOpen={setOpen} />
           </Box>
         </Fade>
       </Modal>
