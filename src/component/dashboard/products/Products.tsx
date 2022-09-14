@@ -1,16 +1,12 @@
 import * as React from "react";
 import Grid from "@mui/material/Grid";
-import Cart from "../cart/Cart";
-import { Typography } from "@mui/material";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ProductHeader from "../../Common/ProductHeader";
+import ProductCard from "./ProductCard";
 
 const Products = () => {
   return (
     <div>
-      <Typography variant="h5" className="product-header">
-        Shopping Cart
-        <ShoppingCartIcon fontSize="large" style={{marginRight: "20px", cursor: "pointer"}} />
-      </Typography>
+      <ProductHeader />
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}
@@ -19,7 +15,7 @@ const Products = () => {
         {[1, 2, 3, 4].map((_) => {
           return (
             <Grid item xs={2} sm={3} md={3}>
-              <Cart />
+              <ProductCard />
             </Grid>
           );
         })}
