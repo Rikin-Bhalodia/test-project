@@ -82,6 +82,26 @@
   justify-content: space-around;
   margin: 0 auto;
   border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
+.home {
+  display: flex;
+}
+.summary {
+  width: 30%;
+}
+.filters {
+  background-color: #343a40;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  margin: 0 10px;
+  height: 86vh;
+}
+.filters > span {
+  padding-bottom: 20px;
 }
 .main_logo {
   position: relative;
