@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IAuthState, IAuthType, IUser } from "../../interface/product";
+import { IAuthState, IAuthType, IUser } from "../../interface/cartProduct";
 
 const initialState: IAuthState = {
   loading: false,
