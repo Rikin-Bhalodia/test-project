@@ -19,7 +19,6 @@ const cartSlice = createSlice({
     addCartProduct(state: any, action: PayloadAction<ICart>) {
       return {
         ...state,
-        cartList: [...state.allUsers, action.payload],
       };
     },
     changeQuantityProduct(state: any, action: PayloadAction<string>) {

@@ -4,9 +4,26 @@ import CardMedia from "@mui/material/CardMedia";
 import AddBoxSharpIcon from "@mui/icons-material/AddBoxSharp";
 import IndeterminateCheckBoxSharpIcon from "@mui/icons-material/IndeterminateCheckBoxSharp";
 import ProductHeader from "../../Common/ProductHeader";
-import DeleteIcon from '@mui/icons-material/Delete';
+import { getAllProductFromCart } from "../../../utils/api/Cart";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllCartProducts } from "../../../redux/selectors/product";
+import { getCartProductAction } from "../../../redux/actions/cartActions";
 
-const Cart = ({ ele }: any) => {
+const Cart = () => {
+  const dispatch = useDispatch();
+  const products = useSelector(getAllCartProducts);
+  console.log(products, "kkkkk");
+
+  const allCartProduct = async () => {
+    const cartProducts = await getAllProductFromCart();
+    dispatch(getCartProductAction(cartProducts));
+  };
+
+  useEffect(() => {
+    allCartProduct();
+  }, []);
   return (
     <>
       <ProductHeader />
