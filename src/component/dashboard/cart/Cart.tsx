@@ -10,22 +10,24 @@ const Cart = ({ ele }: any) => {
     <>
       <ProductHeader />
       <div className="home">
-        <div className="cart">
-          <CardMedia
-            component="img"
-            height="100px"
-            image={testImg}
-            alt="testImg"
-            style={{ width: "150px", borderRadius: ".25rem" }}
-          />
-          <Typography>Product Name</Typography>
-          <Typography>Description</Typography>
-          <div style={{ display: "flex" }}>
-            <AddBoxSharpIcon style={{ cursor: "pointer" }} />
-            <Typography style={{ margin: "0 5px" }}>Quantity</Typography>
-            <IndeterminateCheckBoxSharpIcon style={{ cursor: "pointer" }} />
+        <div className="cart-main">
+          <div className="cart">
+            <CardMedia
+              component="img"
+              height="100px"
+              image={testImg}
+              alt="testImg"
+              style={{ width: "150px", borderRadius: ".25rem" }}
+            />
+            <Typography>Product Name</Typography>
+            <Typography>Description</Typography>
+            <div style={{ display: "flex" }}>
+              <AddBoxSharpIcon style={{ cursor: "pointer" }} />
+              <Typography style={{ margin: "0 5px" }}>Quantity</Typography>
+              <IndeterminateCheckBoxSharpIcon style={{ cursor: "pointer" }} />
+            </div>
+            <Typography>Unit Price</Typography>
           </div>
-          <Typography>Unit Price</Typography>
         </div>
         <div className="filters summary">
           <Typography variant="h4">Subtotal</Typography>
