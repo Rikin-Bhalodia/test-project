@@ -1,44 +1,35 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IAuthState, IAuthType, IUser } from "../../interface/cartProduct";
+import { IintitalState, ICart } from "../../interface/cartProduct";
 
-const initialState: IAuthState = {
+const initialState: IintitalState = {
   loading: false,
-  product: null || [],
-  allProducts: null,
+  cartList: [],
 };
 
 const cartSlice = createSlice({
   name: "cartProduct",
   initialState,
   reducers: {
-    getCartProducts(state: any, action: PayloadAction<IAuthType>) {
+    getCartProducts(state: any, action: PayloadAction<Array<ICart>>) {
       return {
         ...state,
-        allProducts: action.payload,
+        cartList: action.payload,
       };
     },
-    addCartProduct(state: any, action: PayloadAction<IUser>) {
+    addCartProduct(state: any, action: PayloadAction<ICart>) {
       return {
         ...state,
-        product: [...state.allUsers, action.payload],
+        cartList: [...state.allUsers, action.payload],
       };
     },
-    changeQuantityProduct(state: any, action: PayloadAction<IUser>) {
-      const updatedUsers = state.allUsers.filter(
-        (data: any) => data.email !== action.payload.email
-      );
+    changeQuantityProduct(state: any, action: PayloadAction<string>) {
       return {
         ...state,
-        allUsers: updatedUsers,
       };
     },
-    deleteCartProduct(state: any, action: PayloadAction<IUser>) {
-      const updatedUsers = state.allUsers.filter(
-        (data: any) => data.email !== action.payload.email
-      );
+    deleteCartProduct(state: any, action: PayloadAction<string>) {
       return {
         ...state,
-        allUsers: updatedUsers,
       };
     },
   },

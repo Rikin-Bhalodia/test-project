@@ -4,16 +4,11 @@ export interface IAuthType {
   token: string;
 }
 
-export interface IUser {
-  email: string;
-  name: string;
-  age: number;
-  phone: number;
-  prefix: number;
+export interface ICart {
+  productId: string;
+  quantity: number;
 }
-
-export interface IAuthState {
+export interface IintitalState {
   loading: boolean;
-  allProducts: IAuthType | null;
-  product: IUser[];
+  cartList: ICart[];
 }

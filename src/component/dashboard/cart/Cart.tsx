@@ -5,7 +5,7 @@ import AddBoxSharpIcon from "@mui/icons-material/AddBoxSharp";
 import IndeterminateCheckBoxSharpIcon from "@mui/icons-material/IndeterminateCheckBoxSharp";
 import ProductHeader from "../../Common/ProductHeader";
 
-const Cart = () => {
+const Cart = ({ ele }: any) => {
   return (
     <>
       <ProductHeader />
