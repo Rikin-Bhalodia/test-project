@@ -74,15 +74,17 @@
   justify-content: space-between;
 }
 
+.cart-main {
+  width: 100%;
+}
 .cart {
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 0.25rem;
   display: flex;
-  width: 78%;
+  width: 95%;
   padding: 20px;
-  flex-wrap: wrap;
   justify-content: space-around;
   margin: 0 auto;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
 }
 .home {
   display: flex;

@@ -4,18 +4,21 @@ import { PRODUCTION_URL } from "../baseUrl";
 export const getAllProductFromCart = async () => {
   try {
     const res = await axios.get(`${PRODUCTION_URL}/cart/getAllCart`);
-    return res.data.products;
+    return res.data.pushObj;
   } catch (err: any) {
     console.log(err, "err");
   }
 };
 
 export const addProductToCart = async (productId: string) => {
+  console.log(productId, "lll");
+
   try {
     const res = await axios.post(
       `${PRODUCTION_URL}/cart/cartAdd/?productId=${productId}`
     );
-    return res.data.products;
+
+    return res.data.obj;
   } catch (err: any) {
     console.log(err, "err");
   }
