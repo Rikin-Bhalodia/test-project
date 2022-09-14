@@ -61,3 +61,15 @@
   font-size: 16px;
   background-color: white;
 }
+
+.product-header {
+  height: 40px;
+  background-color: #343a40;
+  color: white;
+  margin-bottom: 30px !important;
+  border-radius: 10px;
+  padding: 20px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
