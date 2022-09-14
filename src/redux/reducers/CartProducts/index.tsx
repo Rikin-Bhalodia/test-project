@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IAuthState, IAuthType, IUser } from "../../interface/product";
-// import userMock from 'mocks/user.json';
 
 const initialState: IAuthState = {
   loading: false,
@@ -8,56 +7,48 @@ const initialState: IAuthState = {
   allProducts: null,
 };
 
-const authSlice = createSlice({
+const cartSlice = createSlice({
   name: "cartProduct",
   initialState,
   reducers: {
-    setAuthData(state, action: PayloadAction<IAuthType>) {
+    getCartProducts(state: any, action: PayloadAction<IAuthType>) {
       return {
         ...state,
-        user: action.payload,
+        allProducts: action.payload,
       };
     },
-    addUser(state, action: PayloadAction<IUser>) {
+    addCartProduct(state: any, action: PayloadAction<IUser>) {
       return {
         ...state,
-        // allUsers: [...state.allProducts, action.payload],
+        product: [...state.allUsers, action.payload],
       };
     },
-    updateUser(state, action: PayloadAction<IUser>) {
-      // const updatedUsers = state.allUsers.map((user) => {
-      //   if (user.email === action.payload.email) {
-      //     return {
-      //       ...user,
-      //       ...action.payload,
-      //     };
-      //   }
-      //   return user;
-      // });
+    changeQuantityProduct(state: any, action: PayloadAction<IUser>) {
+      const updatedUsers = state.allUsers.filter(
+        (data: any) => data.email !== action.payload.email
+      );
       return {
         ...state,
-        // allUsers: updatedUsers,
+        allUsers: updatedUsers,
       };
     },
-    deleteUser(state, action: PayloadAction<IUser>) {
-      //   const updatedUsers = state.allUsers.filter(
-      //     (user) => user.email !== action.payload.email
-      //   );
-      //   return {
-      //     ...state,
-      //     allUsers: updatedUsers,
-      //   };
-    },
-    logoutUser(state) {
+    deleteCartProduct(state: any, action: PayloadAction<IUser>) {
+      const updatedUsers = state.allUsers.filter(
+        (data: any) => data.email !== action.payload.email
+      );
       return {
         ...state,
-        user: null,
+        allUsers: updatedUsers,
       };
     },
   },
 });
 
-export const { setAuthData, addUser, updateUser, deleteUser, logoutUser } =
-  authSlice.actions;
+export const {
+  getCartProducts,
+  addCartProduct,
+  changeQuantityProduct,
+  deleteCartProduct,
+} = cartSlice.actions;
 
-export default authSlice.reducer;
+export default cartSlice.reducer;
