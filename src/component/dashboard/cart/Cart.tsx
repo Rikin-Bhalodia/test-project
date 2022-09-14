@@ -1,10 +1,10 @@
 import { Typography } from "@material-ui/core";
 import testImg from "../../../assets/images/img.jpg";
 import CardMedia from "@mui/material/CardMedia";
-import AddBoxSharpIcon from '@mui/icons-material/AddBoxSharp';
-import IndeterminateCheckBoxSharpIcon from '@mui/icons-material/IndeterminateCheckBoxSharp';
+import AddBoxSharpIcon from "@mui/icons-material/AddBoxSharp";
+import IndeterminateCheckBoxSharpIcon from "@mui/icons-material/IndeterminateCheckBoxSharp";
 
-const Cart = () => {
+const Cart = ({ ele }: any) => {
   return (
     <>
       <div className="cart">
@@ -32,7 +32,7 @@ const Cart = () => {
         />
         <Typography>Product Name</Typography>
         <Typography>Description</Typography>
-        <div style={{display: "flex"}}>
+        <div style={{ display: "flex" }}>
           <AddBoxSharpIcon />
           <Typography>Quantity</Typography>
           <IndeterminateCheckBoxSharpIcon />

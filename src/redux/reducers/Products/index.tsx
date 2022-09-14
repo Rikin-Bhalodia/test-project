@@ -13,7 +13,7 @@ const productSlice = createSlice({
     getProducts(state: any, action: PayloadAction<IProduct[]>) {
       return {
         ...state,
-        // allProducts: action.payload,
+        product: action.payload,
       };
     },
     addProduct(state: any, action: PayloadAction<IProduct>) {

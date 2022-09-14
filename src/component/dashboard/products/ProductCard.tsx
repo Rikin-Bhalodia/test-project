@@ -5,16 +5,16 @@ import CardMedia from "@mui/material/CardMedia";
 import { Typography, Button } from "@material-ui/core";
 import testImg from "../../../assets/images/img.jpg";
 
-const ProductCard = () => {
+const ProductCard = ({ ele }: any) => {
   return (
     <div>
       <Card sx={{ maxWidth: 350 }}>
-        <CardMedia component="img" height="200" image={testImg} alt="testImg" />
+        <CardMedia component="img" height="200" image={ele.url} alt="testImg" />
         <CardContent>
-          <Typography>Product Name</Typography>
-          <Typography>Description</Typography>
-          <Typography>Quantity</Typography>
-          <Typography>Unit Price</Typography>
+          <Typography>{ele.name}</Typography>
+          <Typography>{ele.description}</Typography>
+          <Typography>{ele.quantity}</Typography>
+          <Typography>{ele.price}</Typography>
           <Button
             type="submit"
             size="medium"
