@@ -1,9 +1,11 @@
 import React from "react";
+import TransitionsModal from "./Modal";
 
 const Dashboard = () => {
   return (
     <>
-      <div></div>
+      <div>hello</div>
+      <TransitionsModal />
     </>
   );
 };
