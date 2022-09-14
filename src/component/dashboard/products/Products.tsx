@@ -11,12 +11,12 @@ import ProductHeader from "../../Common/ProductHeader";
 const Products = () => {
   const dispatch = useDispatch();
   const products = useSelector(getAuthUser);
-  console.log(products, "lllllllllll");
 
   const AllProduct = async () => {
     const products = await getAllProducts();
     dispatch(getProductAction(products));
   };
+  
   useEffect(() => {
     AllProduct();
   }, []);
