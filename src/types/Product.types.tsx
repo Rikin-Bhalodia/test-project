@@ -1,10 +1,9 @@
 export interface Products {
-  name: number;
+  name: string;
   price: number;
   description: string;
   quantity: number;
   url: string;
-  productId: number;
 }
 
 export interface ProductList {
