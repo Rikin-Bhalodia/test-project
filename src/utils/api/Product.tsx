@@ -12,8 +12,11 @@ export const getAllProducts = async () => {
 };
 
 export const addProduct = async (data: Products) => {
+  console.log(data, "data");
   try {
-    const res = await axios.post(`${PRODUCTION_URL}/product/create`, { data });
+    const res = await axios.post(`${PRODUCTION_URL}/product/create`, {
+      ...data,
+    });
     return res.data.products;
   } catch (err: any) {
     console.log(err, "err");

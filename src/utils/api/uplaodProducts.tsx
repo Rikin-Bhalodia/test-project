@@ -1,17 +1,18 @@
 import firebase, { db } from "../../Firebase-global";
 
-export const uploadProductToFirebase = (file: any) => {
-  firebase
+export const uploadProductToFirebase = async (file: any) => {
+  let url = await firebase
     .storage()
-    .ref("/images")
+    .ref("/images" + file.name)
     .put(file)
     .then((data) => {
       firebase
         .storage()
-        .ref("/image")
+        .ref("/images" + file.name)
         .getDownloadURL()
         .then((url) => {
           console.log(url);
+          return url;
         })
         .catch((err) => {
           console.log(err);
@@ -20,4 +21,5 @@ export const uploadProductToFirebase = (file: any) => {
     .catch((err) => {
       console.log(err);
     });
+  return url;
 };

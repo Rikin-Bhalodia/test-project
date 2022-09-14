@@ -1,19 +1,13 @@
-export interface IAuthType {
-  username: string;
-  password: string;
-  token: string;
+export interface IProduct {
+  name: number;
+  price: number;
+  description: string;
+  quantity: number;
+  url: string;
+  productId: number;
 }
 
-export interface IUser {
-  email: string;
-  name: string;
-  age: number;
-  phone: number;
-  prefix: number;
-}
-
-export interface IAuthState {
+export interface IProductState {
   loading: boolean;
-  allProducts: IAuthType | null;
-  product: IUser[];
+  product: IProduct[];
 }

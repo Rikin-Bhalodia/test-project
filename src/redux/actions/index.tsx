@@ -1,9 +1,9 @@
 import { AppDispatch } from "../store";
-import { IAuthType, IUser } from "./../interface/product";
 import { getProducts, addProduct, deleteProduct } from "../reducers/Products";
+import { IProduct } from "../interface/product";
 
 export const getProductAction: any =
-  (values: IAuthType) => async (dispatch: AppDispatch) => {
+  (values: IProduct[]) => async (dispatch: AppDispatch) => {
     // Api call for register
     const response = values;
     if (response) {
@@ -12,7 +12,7 @@ export const getProductAction: any =
   };
 
 export const addProductAction: any =
-  (values: IUser) => async (dispatch: AppDispatch) => {
+  (values: IProduct) => async (dispatch: AppDispatch) => {
     // Api call for Add user
     const response = values;
     if (response) {
@@ -21,7 +21,7 @@ export const addProductAction: any =
   };
 
 export const deleteProductAction: any =
-  (values: IUser) => async (dispatch: AppDispatch) => {
+  (values: string) => async (dispatch: AppDispatch) => {
     // Api call for delete user
     const response = values;
     if (response) {

@@ -4,22 +4,27 @@ import { FormTextField } from "./Field";
 import * as yup from "yup";
 import "../../App.css";
 import UploadImage from "./UploadImage";
-
+import { useState } from "react";
+import { addProduct } from "../../utils/api/Product";
+import firebase from "../../Firebase-global";
 interface FormValues {
-  product_name: string;
+  name: string;
+  price: number;
   description: string;
-  quantity: string;
-  unit_price: string;
+  quantity: number;
 }
 
 const validationSchema = yup.object().shape({
-  product_name: yup.string().required("Required"),
+  name: yup.string().required("Required"),
   description: yup.string().required("Required"),
   quantity: yup.string().required("Required"),
-  unit_price: yup.string().required("Required"),
+  price: yup.string().required("Required"),
 });
 
-export default function MyForm() {
+export default function MyForm({ setOpen }) {
+  const [url, setUrl] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<any>(null);
+
   return (
     <Container maxWidth="md">
       <Box mb={3} p={2}>
@@ -33,17 +38,42 @@ export default function MyForm() {
       </Box>
       <Formik
         initialValues={{
-          product_name: "",
+          name: "",
           description: "",
-          quantity: "",
-          unit_price: "",
+          quantity: 1,
+          price: 200,
         }}
         validationSchema={validationSchema}
         onSubmit={(
           values: FormValues,
           formikHelpers: FormikHelpers<FormValues>
         ) => {
-          alert(JSON.stringify(values, null, 2));
+          console.log(values);
+          if (selectedImage === null) {
+            addProduct({ ...values, url: "" });
+            setOpen(false);
+          } else {
+            firebase
+              .storage()
+              .ref("/images" + selectedImage.name)
+              .put(selectedImage)
+              .then((data) => {
+                firebase
+                  .storage()
+                  .ref("/images" + selectedImage.name)
+                  .getDownloadURL()
+                  .then((url) => {
+                    addProduct({ ...values, url });
+                    setOpen(false);
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                  });
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          }
           formikHelpers.setSubmitting(false);
         }}
       >
@@ -52,14 +82,11 @@ export default function MyForm() {
             <Grid container spacing={2} xs={12}>
               <Grid item xs={12}>
                 <Field
-                  name="product_name"
+                  name="name"
                   label="Product Name"
                   size="small"
                   component={FormTextField}
                 />
-              </Grid>
-              <Grid item xs={12} style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-                <UploadImage />
               </Grid>
               <Grid item xs={12}>
                 <Field
@@ -73,16 +100,34 @@ export default function MyForm() {
                 <Field
                   name="quantity"
                   label="Quantity"
+                  type="number"
                   size="small"
                   component={FormTextField}
                 />
               </Grid>
               <Grid item xs={12}>
                 <Field
-                  name="unit_price"
+                  name="price"
                   label="Unit Price"
+                  type="number"
                   size="small"
                   component={FormTextField}
+                />
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <UploadImage
+                  url={url}
+                  setUrl={setUrl}
+                  selectedImage={selectedImage}
+                  setSelectedImage={setSelectedImage}
                 />
               </Grid>
               <Grid item xs={12}>

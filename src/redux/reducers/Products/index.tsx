@@ -1,35 +1,30 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IAuthState, IAuthType, IUser } from "../../interface/product";
+import { IProductState, IProduct } from "../../interface/product";
 
-const initialState: IAuthState = {
+const initialState: IProductState = {
   loading: false,
-  allProducts: null,
-  product: null || [],
+  product: [],
 };
 
 const productSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    getProducts(state: any, action: PayloadAction<IAuthType>) {
+    getProducts(state: any, action: PayloadAction<IProduct[]>) {
       return {
         ...state,
         // allProducts: action.payload,
       };
     },
-    addProduct(state: any, action: PayloadAction<IUser>) {
+    addProduct(state: any, action: PayloadAction<IProduct>) {
       return {
         ...state,
         product: [...state.allUsers, action.payload],
       };
     },
-    deleteProduct(state: any, action: PayloadAction<IUser>) {
-      const updatedUsers = state.allUsers.filter(
-        (data: any) => data.email !== action.payload.email
-      );
+    deleteProduct(state: any, action: PayloadAction<string>) {
       return {
         ...state,
-        allUsers: updatedUsers,
       };
     },
   },
