@@ -21,7 +21,7 @@ const validationSchema = yup.object().shape({
   price: yup.string().required("Required"),
 });
 
-export default function MyForm({ setOpen }) {
+export default function MyForm({ setOpen }: any) {
   const [url, setUrl] = useState(null);
   const [selectedImage, setSelectedImage] = useState<any>(null);
 
