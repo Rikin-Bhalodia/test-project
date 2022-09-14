@@ -12,7 +12,6 @@ export const getAllProducts = async () => {
 };
 
 export const addProduct = async (data: Products) => {
-  console.log(data, "data");
   try {
     const res = await axios.post(`${PRODUCTION_URL}/product/create`, {
       ...data,
