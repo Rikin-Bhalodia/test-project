@@ -16,8 +16,6 @@ const Products = () => {
   const products = useSelector(getProducts);
 
   const cartProducts = useSelector(getAllCartProducts);
-  console.log(cartProducts, "kkkkk");
-  console.log(products, "lllllllllll");
 
   const AllProduct = async () => {
     const products = await getAllProducts();
