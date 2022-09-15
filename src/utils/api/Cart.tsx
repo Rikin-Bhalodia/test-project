@@ -37,7 +37,7 @@ export const deleteProductFromCart = async (productId: string) => {
 
 export const decreseQuantity = async (productId: string) => {
   try {
-    const res = await axios.delete(
+    const res = await axios.get(
       `${PRODUCTION_URL}/cart/decreseQuantity/?productId=${productId}`
     );
     return res.data.products;

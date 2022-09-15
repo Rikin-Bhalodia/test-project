@@ -42,7 +42,7 @@ const Products = () => {
         };
       }
     });
-  }, []);
+  }, [products]);
 
   console.log(checkProducts, "checkProducts");
 
