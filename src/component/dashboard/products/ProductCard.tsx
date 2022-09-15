@@ -13,6 +13,7 @@ import {
   deleteProductFromCart,
   getAllProductFromCart,
 } from "../../../utils/api/Cart";
+import testImg from "../../../assets/images/img.jpg";
 
 const ProductCard = ({ ele }: any) => {
   const { name, description, price, quantity, id, isInCart, url } = ele;
@@ -38,7 +39,12 @@ const ProductCard = ({ ele }: any) => {
   return (
     <div>
       <Card sx={{ maxWidth: 350 }}>
-        <CardMedia component="img" height="200" image={url} alt="testImg" />
+        <CardMedia
+          component="img"
+          height="200"
+          image={url || testImg}
+          alt="testImg"
+        />
         <CardContent>
           <Typography>{name}</Typography>
           <Typography>{description}</Typography>

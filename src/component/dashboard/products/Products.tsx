@@ -16,8 +16,6 @@ const Products = () => {
   const products = useSelector(getProducts);
 
   const cartProducts = useSelector(getAllCartProducts);
-  console.log(cartProducts, "kkkkk");
-  console.log(products, "lllllllllll");
 
   const AllProduct = async () => {
     const products = await getAllProducts();
@@ -42,9 +40,7 @@ const Products = () => {
         };
       }
     });
-  }, [products]);
-
-  console.log(checkProducts, "checkProducts");
+  }, [cartProducts]);
 
   return (
     <div>
@@ -54,15 +50,11 @@ const Products = () => {
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
-        {products &&
-          products?.map((ele: any) => {
-            const data = cartProducts.find((data: any) => ele.id === data.id)
-              ? { ...ele, isInCart: true }
-              : { ...ele, isInCart: false };
-
+        {checkProducts &&
+          checkProducts?.map((ele: any) => {
             return (
               <Grid item xs={2} sm={3} md={3}>
-                <ProductCard ele={data} />
+                <ProductCard ele={ele} />
               </Grid>
             );
           })}

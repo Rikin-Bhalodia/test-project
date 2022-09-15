@@ -12,8 +12,6 @@ import * as yup from "yup";
 import "../../App.css";
 import UploadImage from "./UploadImage";
 import { useState } from "react";
-import SaveIcon from "@mui/icons-material/Save";
-import LoadingButton from "@mui/lab/LoadingButton";
 import { addProduct, getAllProducts } from "../../utils/api/Product";
 import firebase from "../../Firebase-global";
 import { getProductAction } from "../../redux/actions";

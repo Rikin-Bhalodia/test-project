@@ -22,7 +22,6 @@ const Cart = () => {
   const dispatch = useDispatch();
   const [cost, setCost] = useState(0);
   const products = useSelector(getAllCartProducts);
-  console.log(products, "kkkkk");
 
   const allCartProduct = async () => {
     const cartProducts = await getAllProductFromCart();

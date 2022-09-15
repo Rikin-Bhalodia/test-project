@@ -30,7 +30,6 @@ const ProductHeader = () => {
   const handleClose = () => setOpen(false);
   const dispatch = useDispatch();
   const products = useSelector(getAllCartProducts);
-  console.log(products, "kkkkk");
 
   const allCartProduct = async () => {
     const cartProducts = await getAllProductFromCart();

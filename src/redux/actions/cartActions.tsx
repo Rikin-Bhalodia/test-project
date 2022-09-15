@@ -19,7 +19,6 @@ export const getCartProductAction: any =
 export const addCartProductAction: any =
   (values: ICart) => async (dispatch: AppDispatch) => {
     // Api call for Add user
-    console.log(values, "values");
 
     const response = values;
     if (response) {
