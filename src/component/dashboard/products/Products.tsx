@@ -28,23 +28,7 @@ const Products = () => {
     AllProduct();
   }, []);
 
-  const checkProducts = useMemo(() => {
-    return products.map((data: any) => {
-      if (cartProducts.find((ele: any) => ele.id === data.id)) {
-        return {
-          ...data,
-          isInCart: true,
-        };
-      } else {
-        return {
-          ...data,
-          isInCart: false,
-        };
-      }
-    });
-  }, []);
-
-  console.log(checkProducts, "checkProducts");
+  console.log(cartProducts, "lllll");
 
   return (
     <div>
@@ -54,11 +38,15 @@ const Products = () => {
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
-        {checkProducts &&
-          checkProducts?.map((ele: any) => {
+        {products &&
+          products?.map((ele: any) => {
+            const data = cartProducts.find((data: any) => ele.id === data.id)
+              ? { ...ele, isInCart: true }
+              : { ...ele, isInCart: false };
+
             return (
               <Grid item xs={2} sm={3} md={3}>
-                <ProductCard ele={ele} />
+                <ProductCard ele={data} />
               </Grid>
             );
           })}
