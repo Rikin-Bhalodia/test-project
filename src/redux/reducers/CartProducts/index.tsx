@@ -19,6 +19,7 @@ const cartSlice = createSlice({
     addCartProduct(state: any, action: PayloadAction<ICart>) {
       return {
         ...state,
+        cartList: action.payload,
       };
     },
     changeQuantityProduct(state: any, action: PayloadAction<string>) {
@@ -29,6 +30,7 @@ const cartSlice = createSlice({
     deleteCartProduct(state: any, action: PayloadAction<string>) {
       return {
         ...state,
+        cartList: action.payload,
       };
     },
   },

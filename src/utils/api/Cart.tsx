@@ -11,8 +11,6 @@ export const getAllProductFromCart = async () => {
 };
 
 export const addProductToCart = async (productId: string) => {
-  console.log(productId, "lll");
-
   try {
     const res = await axios.post(
       `${PRODUCTION_URL}/cart/cartAdd/?productId=${productId}`
@@ -29,7 +27,7 @@ export const deleteProductFromCart = async (productId: string) => {
     const res = await axios.delete(
       `${PRODUCTION_URL}/cart/deleteFromCart/?productId=${productId}`
     );
-    return res.data.products;
+    return res.data.filterproduct;
   } catch (err: any) {
     console.log(err, "err");
   }
