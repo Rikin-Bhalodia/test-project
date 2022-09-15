@@ -28,7 +28,23 @@ const Products = () => {
     AllProduct();
   }, []);
 
-  console.log(cartProducts, "lllll");
+  const checkProducts = useMemo(() => {
+    return products.map((data: any) => {
+      if (cartProducts.find((ele: any) => ele.id === data.id)) {
+        return {
+          ...data,
+          isInCart: true,
+        };
+      } else {
+        return {
+          ...data,
+          isInCart: false,
+        };
+      }
+    });
+  }, [products]);
+
+  console.log(checkProducts, "checkProducts");
 
   return (
     <div>
