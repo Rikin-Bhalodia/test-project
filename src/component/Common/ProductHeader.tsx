@@ -54,7 +54,7 @@ const ProductHeader = () => {
           fontSize="large"
           style={{ marginRight: "20px", cursor: "pointer" }}
         />
-        <div className="circle">1</div>
+        <div className="circle">{products.length}</div>
       </div>
       <Modal
         aria-labelledby="transition-modal-title"

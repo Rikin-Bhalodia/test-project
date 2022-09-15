@@ -7,6 +7,7 @@ import ProductHeader from "../../Common/ProductHeader";
 import {
   addProductToCart,
   decreseQuantity,
+  deleteProductFromCart,
   getAllProductFromCart,
 } from "../../../utils/api/Cart";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -15,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllCartProducts } from "../../../redux/selectors/product";
 import {
   addCartProductAction,
+  deleteCartProductAction,
   getCartProductAction,
 } from "../../../redux/actions/cartActions";
 
@@ -43,6 +45,13 @@ const Cart = () => {
     let value = calculateTotalCost(products);
     setCost(value);
   }, [products]);
+
+  const removeToCart = async (id: string) => {
+    const deleteCartProduct = await deleteProductFromCart(id);
+    dispatch(deleteCartProductAction(deleteCartProduct));
+    allCartProduct();
+  };
+
   return (
     <>
       <ProductHeader />
@@ -81,7 +90,10 @@ const Cart = () => {
                     />
                   </div>
                   <Typography>{data?.price}</Typography>
-                  <DeleteIcon style={{ cursor: "pointer" }} />
+                  <DeleteIcon
+                    style={{ cursor: "pointer" }}
+                    onClick={() => removeToCart(data?.id)}
+                  />
                 </div>
               );
             })}
