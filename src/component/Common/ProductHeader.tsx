@@ -45,7 +45,12 @@ const ProductHeader = () => {
   };
   return (
     <Typography variant="h5" className="product-header">
-      Shopping Cart
+      <span
+        onClick={() => navigate("/dashboard")}
+        style={{ cursor: "pointer" }}
+      >
+        Shopping Cart
+      </span>
       <Typography onClick={handleOpen} style={{ cursor: "pointer" }}>
         Add Product
       </Typography>
